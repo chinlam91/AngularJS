@@ -1,4 +1,10 @@
-# AngularJS
+# AngularJS - VMS
 Create a good practice for AngularJS Code Structure
 
-Using AngularJS Module to create an application 
+
+----------
+
+###Code Sturcture
+- 
+
+

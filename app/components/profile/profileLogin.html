@@ -29,7 +29,7 @@
             <!--/.navbar-collapse -->
         </div>
     </nav>
-    <div class="container" ng-controller="profileController">
+    <div class="container" ng-controller="profileController as profile">
 
         <h1>My Profile</h1>
 
@@ -40,28 +40,52 @@
                 <div class="row">
                     <hr class="line" style="margin: auto;">
                     <div class="container">
-                        <img ng-src={{volunteer.image}} class="img-circle"
+                        <img ng-src={{profile.volunteer.image}} class="img-circle"
                              style="height: 200px ;width: 200px ; margin: 30px">
 
                     </div>
-                    <h3 style="text-align: center;">{{volunteer.name}}</h3>
+                    <h3 style="text-align: center;">{{profile.volunteer.name}}</h3>
 
                     <div class="container" style="width: inherit;margin:30px;">
-                        {{volunteer.introduction}}
+                        {{profile.volunteer.introduction}}
                     </div>
                     <div class="container" style="margin-left: 30px">
                         <label>Participating</label>
-                        <button class="btn btn-info btn_custom" style="margin-left:30px">{{volunteer.participating}}</button>
+                        <button class="btn btn-info btn_custom" style="margin-left:30px">
+                            {{profile.volunteer.participating}}
+                        </button>
                     </div>
                     <div class="container" style="margin-left: 30px">
                         <label>Participated</label>
-                        <button class="btn btn-info btn_custom" style="margin-left: 35px ;margin-top: 10px">{{volunteer.participated}}</button>
+                        <button class="btn btn-info btn_custom" style="margin-left: 35px ;margin-top: 10px">
+                            {{profile.volunteer.participated}}
+                        </button>
                     </div>
                 </div>
 
             </div>
-            <div class="col-md-8 col-md-offset-1" style="background:white;height: 500px">
 
+            <div class="col-md-8" style="background:white;height: auto;margin-left: 20px">
+                <div ng-init="tab = 1">
+                    <ul class="nav  nav-tabs" style="margin: 20px">
+                        <li ng-class="{active:tab===1}"><a href ng-click="tab=1">Profile</a></li>
+                        <li ng-class="{active:tab===2}"><a href ng-click="tab=2">Projects</a></li>
+                    </ul>
+                </div>
+                <!--about Directive -->
+                <div class="panel" ng-show="tab===1" >
+                    <div ng-include src="'aboutDirective.html'"></div>
+                    <hr>
+                    <div ng-include src="'contactDirective.html'"></div>
+                    <hr>
+                    <div ng-include src="'eeDirective.html'"></div>
+                    <hr>
+                    <div ng-include src="'seDirective.html'"></div>
+                </div>
+
+                <div class="panel" ng-show="tab===2">
+                    <h1>bbbb</h1>
+                </div>
 
             </div>
         </div>
@@ -69,7 +93,7 @@
     </div>
 
 
-    <footer style="margin-top:20px">
+    <footer style="margin-top:40px">
         <div class="col-sm-2">By OpenISDM</div>
         <a href="#" class="col-sm-2" style="color:#7AFEC6;font-family:serif;font-weight:bold">Privacy policies</a>
     </footer>
